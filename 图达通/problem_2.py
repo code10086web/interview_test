@@ -135,7 +135,7 @@ if __name__ == '__main__':
         if ans==pred_ans or (pred_ans is not None and abs(pred_ans[1]-pred_ans[0])==diff):
             print("找到的石头对是满足要求的")
 
-        #Question C代码测试
+        #Question C代码测试 测是
         pred_ans_all = find_stone_pairs(stones_weight, diff)
         print(pred_ans_all)
 
