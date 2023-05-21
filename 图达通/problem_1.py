@@ -205,12 +205,13 @@ def find_paths_question_e(grid, row, col, path, paths,visited):
         paths.append(path.copy())
     else:
         # 否则，尝试向上，下，左，右移动，并在每个方向上递归调用findPaths函数
-        find_paths_question_d(grid, row-1, col, path, paths)
-        find_paths_question_d(grid, row + 1, col, path, paths)
-        find_paths_question_d(grid, row , col-1, path, paths)
-        find_paths_question_d(grid, row , col+1, path, paths)
+        find_paths_question_e(grid, row-1, col, path, paths,visited)
+        find_paths_question_e(grid, row + 1, col, path, paths,visited)
+        find_paths_question_e(grid, row , col-1, path, paths,visited)
+        find_paths_question_e(grid, row , col+1, path, paths,visited)
     # 在完成递归后，从路径中删除当前位置
     path.pop()
+    visited[row][col]=False
 
 # num_paths = countPaths_question_b(grid)
 # print(f"从左上角到右下角共有 {num_paths} 条可行路径。")

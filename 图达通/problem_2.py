@@ -101,18 +101,21 @@ def find_stone_pairs(stones, d):
         if stones[i] not in stone_dict:
             stone_dict[stones[i]] = []
         stone_dict[stones[i]].append(i)
-
+    print(stone_dict)
     # 步骤2：查找所有重量差为D的石头对
     stone_pairs = set()
     for i in range(len(stones)):
         if (stones[i] + d) in stone_dict:
             for j in stone_dict[stones[i] + d]:
+                if i==j:
+                    print("cdscshbdc")
                 if i != j:
                     stone_pairs.add(tuple(sorted([i, j])))
         if (stones[i] - d) in stone_dict:
             for j in stone_dict[stones[i] - d]:
                 if i != j:
                     stone_pairs.add(tuple(sorted([i, j])))
+    print(stone_pairs)
 
     # 步骤3：将索引对的集合转换为包含实际石头重量的元组集合
     result = set()
@@ -124,19 +127,22 @@ def find_stone_pairs(stones, d):
 
 
 if __name__ == '__main__':
-
+    stones=[12.5,32,2.1,2.2,4,2,3,8,8,9.2,9,10,10,11]
+    d=0.1
+    print(stones)
+    find_stone_pairs(stones,d)
     #Question B.4和Question C测试
-    for test_sample in test_samples:
-        stones_weight=test_sample.stones_weights
-        diff=test_sample.differ
-        ans=test_sample.ans
-        #Question B.4代码测试
-        pred_ans=find_stone_pair(stones_weight,diff)
-        if ans==pred_ans or (pred_ans is not None and abs(pred_ans[1]-pred_ans[0])==diff):
-            print("找到的石头对是满足要求的")
-
-        #Question C代码测试 测是
-        pred_ans_all = find_stone_pairs(stones_weight, diff)
-        print(pred_ans_all)
-
+    # for test_sample in test_samples:
+    #     stones_weight=test_sample.stones_weights
+    #     diff=test_sample.differ
+    #     ans=test_sample.ans
+    #     #Question B.4代码测试
+    #     pred_ans=find_stone_pair(stones_weight,diff)
+    #     if ans==pred_ans or (pred_ans is not None and abs(pred_ans[1]-pred_ans[0])==diff):
+    #         print("找到的石头对是满足要求的")
+    #
+    #     #Question C代码测试 测是
+    #     pred_ans_all = find_stone_pairs(stones_weight, diff)
+    #     print(pred_ans_all)
+    #
 
